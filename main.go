@@ -44,7 +44,7 @@ var cpuData CPUData
 
 func init() {
 	cpuData.currentInstance = 1
-	cpuData.isActive = true
+	cpuData.isActive = false
 	cpuData.stats[0] = currentCPUTimes()
 }
 
@@ -125,18 +125,22 @@ func handleRequest(conn net.Conn) {
 	if !cpuData.isActive {
 		data, err := ioutil.ReadFile(stateFile)
 		if err != nil {
-			panic(err)
-		}
-
-		var output string
-		content := strings.TrimSpace(string(data))
-		switch content {
-		case "down", "drain", "failed", "maint", "stopped", "ready", "up":
-			output = content
-		default:
+			// we might end up here if file doesn't exist, e.g.
+			// on first invocation within socket activation,
+			// let's try to report CPU data then instead
 			cpuData.isActive = true
+		} else {
+			var output string
+			content := strings.TrimSpace(string(data))
+			switch content {
+			case "down", "drain", "failed", "maint", "stopped", "ready", "up":
+				output = content + " \n"
+			default:
+				log.Printf("WARN: unsupported instructions in file detected: '%s'", content)
+				cpuData.isActive = true
+			}
+			conn.Write([]byte(string(output)))
 		}
-		conn.Write([]byte(string(output)))
 	}
 
 	if cpuData.isActive {
