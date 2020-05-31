@@ -30,7 +30,7 @@ import "C"
 
 // stateFile exists and is valid, then message is returned, to support
 // https://cbonte.github.io/haproxy-dconv/2.0/configuration.html#5.2-agent-check
-var stateFile = "/var/run/haproxy-healthcheck"
+var stateFile string
 
 // CPUData is a global data structure written by an evaluation goroutine
 // and read by all TCP connections
@@ -189,7 +189,7 @@ func updateServerState() {
 }
 
 func main() {
-	flag.StringVar(&stateFile, "f", "/var/run/haproxy-healthcheck", "Specify healthcheck status file.")
+	flag.StringVar(&stateFile, "f", "/var/lib/haproxy-healthcheck/statefile", "Specify healthcheck status file.")
 	flag.Parse()
 
 	fmt.Printf("INFO: Healthcheck status file set to %s\n", stateFile)

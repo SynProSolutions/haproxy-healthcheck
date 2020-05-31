@@ -12,7 +12,7 @@ The reported integer percentage is similar to what the `vmstat(8)` tool reports 
      0  0      0 1941764 213768 4152592    0    0     0    20 2206 5761  7  8 85  0  0
      [...]
 
-The file `/var/run/haproxy-healthcheck` can be used to control the server's administrative state.
+The file `/var/lib/haproxy-healthcheck/statefile` can be used to control the server's administrative state.
 If the file exists and contains a supported keyword, its content is reported *instead* of the integer percentage.
 The following keywords are currently supported:
 
