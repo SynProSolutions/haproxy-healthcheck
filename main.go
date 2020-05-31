@@ -192,7 +192,7 @@ func main() {
 	flag.StringVar(&stateFile, "f", "/var/run/haproxy-healthcheck", "Specify healthcheck status file.")
 	flag.Parse()
 
-	fmt.Printf("INFO: Healtcheck status file set to %s\n", stateFile)
+	fmt.Printf("INFO: Healthcheck status file set to %s\n", stateFile)
 
 	// without socket activation:
 	// listener, err := net.Listen("tcp", "localhost:3333")
