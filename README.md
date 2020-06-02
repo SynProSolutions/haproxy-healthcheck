@@ -87,7 +87,7 @@ A sample [haproxy configuration file](https://github.com/SynProSolutions/haproxy
 
 ## Author
 
-Michael Prokop, SynProSolutions GmbH
+Michael Prokop, [SynPro Solutions GmbH](https://synpro.solutions/)
 
 ## License
 
