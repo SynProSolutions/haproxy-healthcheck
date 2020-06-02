@@ -38,6 +38,12 @@ For testing its integration, you can manually start it to listen on port 2048 vi
 
 ## Installation / Build instructions
 
+### Binary packages
+
+Pre-built binary files are available under [releases](https://github.com/SynProSolutions/haproxy-healthcheck/releases).
+
+### Building from source
+
 Make sure to have the build dependencies available:
 
     % sudo apt install gcc libc6-dev golang-go
