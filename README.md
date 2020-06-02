@@ -4,7 +4,7 @@
 
 The reported integer percentage is similar to what the `vmstat(8)` tool reports in its `id` column when being invoked with a delay of 1 second, like:
 
-     vmstat 1
+    % vmstat 1
     procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
      r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
      2  0      0 1939504 213764 4155308    0    0    40    64    5    9  9  5 86  0  0
