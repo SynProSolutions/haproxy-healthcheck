@@ -58,7 +58,7 @@ Then either get the repository via:
 
 ## System integration
 
-To integrate `haproxy-healthcheck`, set up an according systemd service unit:
+To integrate `haproxy-healthcheck`, set up an according systemd service unit (adjust `/usr/bin/haproxy-healthcheck` as needed):
 
     % cat /etc/systemd/system/haproxy-healthcheck.service
     [Unit]
@@ -78,10 +78,10 @@ Set up the corresponding systemd socket unit:
     [Install]
     WantedBy = sockets.target
 
-Finally enable the systemd socket activation:
+Finally start + enable the systemd socket activation:
 
     % sudo systemctl daemon-reload
-    % sudo systemctl start haproxy-healthcheck.socket
+    % sudo systemctl enable --now haproxy-healthcheck.socket
 
 A sample [haproxy configuration file](https://github.com/SynProSolutions/haproxy-healthcheck/blob/master/haproxy/haproxy.cfg) which might serve as inspiration or for testing is available.
 
